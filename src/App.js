@@ -13,7 +13,11 @@ function App() {
         <div className="App">
             {console.log(token)}
             <Router>
-                <NavBar />
+                <NavBar
+                    loggedIn={loggedIn}
+                    setLoggedIn={setLoggedIn}
+                    setToken={setToken}
+                />
                 <Switch>
                     <Route exact path="/" render={() => <Home />} />
                     <Route

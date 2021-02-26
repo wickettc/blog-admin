@@ -1,0 +1,19 @@
+nav {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    padding: 1%;
+    background-color: gray;
+    color: white;
+    text-decoration: none;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+}
+
+.logout {
+    cursor: pointer;
+    color: white;
+}
