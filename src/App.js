@@ -6,6 +6,7 @@ import PostPage from './pages/PostPage';
 import CreatePost from './pages/CreatePost';
 import Login from './pages/Login';
 import './App.css';
+import { Redirect } from 'react-router-dom';
 
 function App() {
     const [token, setToken] = useState('');
@@ -17,6 +18,7 @@ function App() {
     return (
         <div className="App">
             <Router>
+                {!loggedIn ? <Redirect to="/login" /> : null}
                 <NavBar
                     loggedIn={loggedIn}
                     setLoggedIn={setLoggedIn}

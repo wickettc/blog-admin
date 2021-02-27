@@ -10,7 +10,7 @@ const NavBar = ({ loggedIn, setLoggedIn, setToken }) => {
 
     return (
         <nav>
-            <Link to="/">Home</Link>
+            {!loggedIn ? <div>Please Login to proceed</div> :(<Link to="/">Home</Link>
             <Link to="createpost">Create Post</Link>
             {loggedIn ? (
                 <div className="logout" onClick={() => logout()}>
@@ -18,7 +18,7 @@ const NavBar = ({ loggedIn, setLoggedIn, setToken }) => {
                 </div>
             ) : (
                 <Link to="/login">Log In</Link>
-            )}
+            )})}
         </nav>
     );
 };
