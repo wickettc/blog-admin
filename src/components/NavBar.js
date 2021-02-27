@@ -9,17 +9,23 @@ const NavBar = ({ loggedIn, setLoggedIn, setToken }) => {
     };
 
     return (
-        <nav>
-            {!loggedIn ? <div>Please Login to proceed</div> :(<Link to="/">Home</Link>
-            <Link to="createpost">Create Post</Link>
-            {loggedIn ? (
-                <div className="logout" onClick={() => logout()}>
-                    Logout
-                </div>
+        <div>
+            {!loggedIn ? (
+                <nav>Please Login to proceed</nav>
             ) : (
-                <Link to="/login">Log In</Link>
-            )})}
-        </nav>
+                <nav>
+                    <Link to="/">Home</Link>
+                    <Link to="createpost">Create Post</Link>
+                    {loggedIn ? (
+                        <div className="logout" onClick={() => logout()}>
+                            Logout
+                        </div>
+                    ) : (
+                        <Link to="/login">Log In</Link>
+                    )}
+                </nav>
+            )}
+        </div>
     );
 };
 

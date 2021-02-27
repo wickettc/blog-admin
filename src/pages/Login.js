@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 const Login = ({ setToken, setLoggedIn }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [errMsg, setErrMsg] = useState('');
     let history = useHistory();
 
     const handleChange = (e) => {
@@ -18,11 +19,15 @@ const Login = ({ setToken, setLoggedIn }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         const res = await login(username, password);
-        setToken(`Bearer ${res.token}`);
-        setLoggedIn(true);
-        setUsername('');
-        setPassword('');
-        history.push('/');
+        if (res.status === 200) {
+            setToken(`Bearer ${res.data.token}`);
+            setLoggedIn(true);
+            setUsername('');
+            setPassword('');
+            history.push('/');
+        } else {
+            setErrMsg('please try again');
+        }
     };
 
     return (
@@ -42,6 +47,7 @@ const Login = ({ setToken, setLoggedIn }) => {
                     value={password}
                     onChange={handleChange}
                 />
+                {errMsg ? <div style={{ color: 'red' }}>{errMsg}</div> : null}
                 <button>Login</button>
             </form>
         </div>
