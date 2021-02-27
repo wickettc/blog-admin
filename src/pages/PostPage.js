@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import DeletePopup from '../components/DeletePopup';
+import EditPopup from '../components/EditPopup';
 import { fetchSinglePost } from '../api/blogCall';
 import _ from 'lodash';
 
@@ -7,6 +8,7 @@ const PostPage = ({ match, token, setUpdated }) => {
     const [post, setPost] = useState({});
     const [comments, setComments] = useState({});
     const [showDelete, setShowDelete] = useState(false);
+    const [showEdit, setShowEdit] = useState(false);
 
     useEffect(() => {
         const getPost = async (id) => {
@@ -24,6 +26,16 @@ const PostPage = ({ match, token, setUpdated }) => {
                 <div>Nothing to display</div>
             ) : (
                 <div>
+                    {showEdit ? (
+                        <EditPopup
+                            title={post.title}
+                            message={post.message}
+                            setShowEdit={setShowEdit}
+                            id={post._id}
+                            token={token}
+                            setUpdated={setUpdated}
+                        />
+                    ) : null}
                     {showDelete ? (
                         <DeletePopup
                             title={post.title}
@@ -35,7 +47,10 @@ const PostPage = ({ match, token, setUpdated }) => {
                     ) : null}
                     <h2>"{post.title}" Page</h2>
                     <p>{post.message}</p>
-                    <div className="edit-post-div">
+                    <div
+                        onClick={() => setShowEdit(true)}
+                        className="edit-post-div"
+                    >
                         <svg
                             xmlns="http://www.w3.org/2000/svg"
                             width="24"

@@ -61,4 +61,23 @@ const deletePost = async (id, token) => {
     }
 };
 
-export { login, fetchPosts, fetchSinglePost, createPost, deletePost };
+const editPost = async (id, title, message, token) => {
+    try {
+        const response = await axios.put(
+            `${baseURL}blog/post/${id}`,
+            {
+                title,
+                author: 'Chase Wickett',
+                message,
+            },
+            {
+                headers: { Authorization: token },
+            }
+        );
+        return response.data;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export { login, fetchPosts, fetchSinglePost, createPost, deletePost, editPost };

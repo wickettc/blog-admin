@@ -17,7 +17,7 @@ const NavBar = ({ loggedIn, setLoggedIn, setToken }) => {
                     Logout
                 </div>
             ) : (
-                <Link to="login">Log In</Link>
+                <Link to="/login">Log In</Link>
             )}
         </nav>
     );
