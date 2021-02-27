@@ -5,6 +5,7 @@ import Home from './pages/Home';
 import PostPage from './pages/PostPage';
 import CreatePost from './pages/CreatePost';
 import Login from './pages/Login';
+import NotFound from './pages/NotFound';
 import './App.css';
 import { Redirect } from 'react-router-dom';
 
@@ -54,10 +55,14 @@ function App() {
                             <PostPage
                                 token={token}
                                 match={match}
+                                updated={updated}
                                 setUpdated={setUpdated}
                             />
                         )}
                     />
+                    <Route>
+                        <NotFound />
+                    </Route>
                 </Switch>
             </Router>
         </div>

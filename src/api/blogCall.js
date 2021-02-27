@@ -83,4 +83,23 @@ const editPost = async (id, title, message, token) => {
     }
 };
 
-export { login, fetchPosts, fetchSinglePost, createPost, deletePost, editPost };
+const deleteComment = async (id, token) => {
+    try {
+        const response = axios.delete(`${baseURL}blog/comment/${id}`, {
+            headers: { Authorization: token },
+        });
+        return response;
+    } catch (err) {
+        console.log(err);
+    }
+};
+
+export {
+    login,
+    fetchPosts,
+    fetchSinglePost,
+    createPost,
+    deletePost,
+    editPost,
+    deleteComment,
+};

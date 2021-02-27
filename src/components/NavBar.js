@@ -10,12 +10,13 @@ const NavBar = ({ loggedIn, setLoggedIn, setToken }) => {
 
     return (
         <div>
+            {/* must loggin before anything else */}
             {!loggedIn ? (
                 <nav>Please Login to proceed</nav>
             ) : (
                 <nav>
                     <Link to="/">Home</Link>
-                    <Link to="createpost">Create Post</Link>
+                    <Link to="/createpost">Create Post</Link>
                     {loggedIn ? (
                         <div className="logout" onClick={() => logout()}>
                             Logout

@@ -9,7 +9,6 @@ const Home = ({ updated, setUpdated }) => {
         const getPosts = async () => {
             const res = await fetchPosts();
             setPosts(res);
-            console.log(res);
         };
         getPosts();
         setUpdated(false);
@@ -20,8 +19,12 @@ const Home = ({ updated, setUpdated }) => {
             {posts.length > 0 ? (
                 posts.map((post) => {
                     return (
-                        <div key={post._id}>
+                        <div
+                            style={{ border: '1px solid black', margin: '5px' }}
+                            key={post._id}
+                        >
                             <Link to={`/post/${post._id}`}>{post.title}</Link>
+                            <div>{post.time}</div>
                         </div>
                     );
                 })

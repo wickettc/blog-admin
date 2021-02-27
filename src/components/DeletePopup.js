@@ -1,8 +1,16 @@
 import React from 'react';
-import { deletePost } from '../api/blogCall';
+import { deletePost, deleteComment } from '../api/blogCall';
 import { useHistory } from 'react-router-dom';
 
-const DeletePopup = ({ id, title, setShowDelete, token, setUpdated }) => {
+const DeletePopup = ({
+    id,
+    title,
+    setShowDelete,
+    token,
+    setUpdated,
+    redirectTo,
+    postORComment,
+}) => {
     let history = useHistory();
 
     return (
@@ -10,9 +18,11 @@ const DeletePopup = ({ id, title, setShowDelete, token, setUpdated }) => {
             <h3>Are you sure you want to delete "{title}"</h3>
             <button
                 onClick={() => {
-                    deletePost(id, token);
+                    postORComment === 'post'
+                        ? deletePost(id, token)
+                        : deleteComment(id, token);
                     setUpdated(true);
-                    history.push('/');
+                    history.push(`${redirectTo}`);
                 }}
             >
                 Yes

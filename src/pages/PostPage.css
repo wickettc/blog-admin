@@ -1,0 +1,17 @@
+.post-btns {
+    display: flex;
+    justify-content: center;
+}
+
+.post-btns div {
+    margin: 5px;
+}
+
+.post-container {
+    text-align: center;
+}
+
+.comment-container {
+    border: 1px solid black;
+    margin: 5px;
+}
