@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { fetchPosts } from '../api/blogCall';
 import { Link } from 'react-router-dom';
+import _ from 'lodash';
 
 const Home = ({ updated, setUpdated }) => {
     const [posts, setPosts] = useState([]);
@@ -16,7 +17,7 @@ const Home = ({ updated, setUpdated }) => {
 
     return (
         <div>
-            {posts.length > 0 ? (
+            {!_.isEmpty(posts) ? (
                 posts.map((post) => {
                     return (
                         <div
